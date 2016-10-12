@@ -24,14 +24,10 @@ module.exports.loop = function () {
     if(harvesters.length < 2 && Game.spawns['Spawn1'].energy >= 200) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'harvester'});
         console.log('Spawning new harvester: ' + newName);
-    }
-
-    if(upgraders.length < 2 && Game.spawns['Spawn1'].energy >= 200) {
+    } else if(upgraders.length < 2 && Game.spawns['Spawn1'].energy >= 200) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
         console.log('Spawning new harvester: ' + newName);
-    }
-
-    if(builders.length < 2 && Game.spawns['Spawn1'].energy >= 200) {
+    } else if(builders.length < 2 && Game.spawns['Spawn1'].energy >= 200) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'builder'});
         console.log('Spawning new builder: ' + newName);
     }
