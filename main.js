@@ -21,15 +21,19 @@ module.exports.loop = function () {
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     console.log('Builders: '+ builders.length);
 
-    if(harvesters.length < 2 && Game.spawns['Spawn1'].energy >= 200) {
+    if(harvesters.length < 5 && Game.spawns['Spawn1'].energy >= 200) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'harvester'});
         console.log('Spawning new harvester: ' + newName);
-    } else if(upgraders.length < 2 && Game.spawns['Spawn1'].energy >= 200) {
+    } else if(upgraders.length < 3 && Game.spawns['Spawn1'].energy >= 200) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
         console.log('Spawning new harvester: ' + newName);
-    } else if(builders.length < 2 && Game.spawns['Spawn1'].energy >= 200) {
+    } else if(builders.length < 3 && Game.spawns['Spawn1'].energy >= 200) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'builder'});
         console.log('Spawning new builder: ' + newName);
+    }  else try{
+      Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], {role: 'harvester'});
+    } catch(ERR_NOT_ENOUGH_ENERGY){
+      
     }
 
     for(var name in Game.creeps) {
