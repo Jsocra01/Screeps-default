@@ -31,9 +31,10 @@ module.exports.loop = function () {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'builder'});
         console.log('Spawning new builder: ' + newName);
     }  else try{
-      Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], {role: 'harvester'});
+        var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
+        
     } catch(ERR_NOT_ENOUGH_ENERGY){
-      
+        console.log('Spawning new harvester: ' + newName);
     }
 
     for(var name in Game.creeps) {
